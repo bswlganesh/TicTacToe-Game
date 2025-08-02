@@ -28,9 +28,11 @@ boxes.forEach((box)=>{
         if (turn0==true) {
             box.innerText="O";
             turn0=false;
+            
         } else {
             box.innerText="X";
             turn0=true;
         }
+        box.disabled=true;
     })
 })
