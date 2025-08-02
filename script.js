@@ -7,7 +7,7 @@ let newgame=document.querySelector(".newgame");
 //for resetn game button
 let resetgame=document.querySelector(".reset");
 //fpr chaning turns or players
-
+let turn=document.querySelector(".turn");
 let turn0=true;
 
 const winPatterns=[
@@ -21,12 +21,23 @@ const winPatterns=[
  [6,7,8]
 ];
 
-//acess each member of array boxes
+function playerTurn() {
 
+    if (turn0==true){
+        turn.innerText="O's TURN"
+    }
+    else{
+        turn.innerText="X's TURN"
+    }
+};
+
+//acess each member of array boxes
+var count=0;
 boxes.forEach((box)=>{
     //har member par ek event lister
     box.addEventListener("click",()=>{
         //jab click hoga to log this
+        count+=1;
         console.log("clicksd");
 
         //and jab clock hoga to turn chane karna
@@ -41,13 +52,15 @@ boxes.forEach((box)=>{
         };
         box.disabled=true;
         checkWin();
+        draw();
+        playerTurn();
     });
 });
 
 //to show the winner on screen
 function showwin(winner) {
     //change inner text of winner 
-    message.innerText=`winner is ${winner}`;
+    message.innerText=`${winner} is the Winner`;
     //remove hide wala class from wincontainer 
     wincontainer.classList.remove("hide");
     
@@ -69,12 +82,22 @@ function checkWin() {
             showwin(p1);
             allbuttondisable();
         }
+      
+      
     }
 };
 
  };
 
-
+//function for draw
+function draw() {
+    if (count===9){
+        message.innerText=`DRAW`;
+        //remove hide wala class from wincontainer 
+        wincontainer.classList.remove("hide");
+    }
+   
+}
 
  //disable all buttons after win is declared 
  function allbuttondisable() {
@@ -90,6 +113,7 @@ function checkWin() {
         turn0=true;
         box.innerText="";
         wincontainer.classList.add("hide");
+        turn.innerText="O's TURN";
     };
  };
 
