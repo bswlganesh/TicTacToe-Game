@@ -41,11 +41,14 @@ boxes.forEach((box)=>{
         checkWin();
     });
 });
+
+//to show the winner on screen
 function showwin(winner) {
     //change inner text of winner 
     message.innerText=`winner is ${winner}`;
     //remove hide wala class from wincontainer 
     wincontainer.classList.remove("hide");
+    
    };
 
 function checkWin() { 
@@ -62,9 +65,19 @@ function checkWin() {
         if(p1=== p2 && p2 === p3){
             console.log("winner is",p1);
             showwin(p1);
+            allbuttondisable();
         }
     }
 };
 
  };
 
+
+
+ //dosable all buttons after win is declared 
+ function allbuttondisable() {
+    for (let box of boxes){
+        box.disabled=true;
+    }
+ }
+ 
