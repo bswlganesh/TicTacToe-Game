@@ -1,11 +1,13 @@
 let boxes=document.querySelectorAll(".box");
-//for new game button
-let newgame=document.querySelector(".newgame");
-
+//for winner show on screen
 let wincontainer=document.querySelector(".wincontainer");
 let message=document.querySelector(".message");
+//for new game button
+let newgame=document.querySelector(".newgame");
+//for resetn game button
+let resetgame=document.querySelector(".reset");
+//fpr chaning turns or players
 
-//fpr chaning turns
 let turn0=true;
 
 const winPatterns=[
@@ -74,10 +76,22 @@ function checkWin() {
 
 
 
- //dosable all buttons after win is declared 
+ //disable all buttons after win is declared 
  function allbuttondisable() {
     for (let box of boxes){
         box.disabled=true;
-    }
- }
- 
+    };
+ };
+
+  //enable all buttons after win is declared 
+  function allbuttonenable() {
+    for (let box of boxes){
+        box.disabled=false;
+        turn0=true;
+        box.innerText="";
+        wincontainer.classList.add("hide");
+    };
+ };
+
+ newgame.addEventListener("click",allbuttonenable);
+ resetgame.addEventListener("click",allbuttonenable);
