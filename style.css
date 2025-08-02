@@ -46,3 +46,7 @@ body{
     height: 1rem;
     width: 10rem;
 }
+
+.hide{
+    display: none;
+}

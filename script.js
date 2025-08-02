@@ -1,5 +1,9 @@
 let boxes=document.querySelectorAll(".box");
+//for new game button
+let newgame=document.querySelector(".newgame");
 
+let wincontainer=document.querySelector(".wincontainer");
+let message=document.querySelector(".message");
 
 //fpr chaning turns
 let turn0=true;
@@ -37,7 +41,12 @@ boxes.forEach((box)=>{
         checkWin();
     });
 });
-
+function showwin(winner) {
+    //change inner text of winner 
+    message.innerText=`winner is ${winner}`;
+    //remove hide wala class from wincontainer 
+    wincontainer.classList.remove("hide");
+   };
 
 function checkWin() { 
     let pattern;
@@ -52,9 +61,10 @@ function checkWin() {
     if(p1!="" && p2!="" && p3!=""){
         if(p1=== p2 && p2 === p3){
             console.log("winner is",p1);
-            
+            showwin(p1);
         }
     }
 };
 
- }
+ };
+
